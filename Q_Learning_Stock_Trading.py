@@ -76,6 +76,8 @@ stocks = pd.DataFrame(ticker_dict)
 
 print(stocks.head())
 
+stocks.to_csv('./dataset/data.csv')
+
 
 # companies = []
 # for i in range(len(symbols)):
