@@ -83,6 +83,9 @@ for i in range(len(symbols)):
     name = names[i]
     companies.append(Company(symbol, name, list(stocks[symbol][0:])))
 
+with open('./preprocessed_data/file.pkl', 'wb') as file:
+    dump(companies, file)
+
 # def plot_stock(symbol):
 #   for i in range(len(companies)):
 #     if companies[i].symbol == symbol:

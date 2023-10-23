@@ -187,7 +187,5 @@ models = []
 
 for i in range(1, 5): # number of 100 neuron hidden layers for model
   model, target_model = fit_model(layers=[100 for k in range(i)])
-  model.save("./models/model_{i}")
+  model.save(f"./models/model_{i}")
   models.append(model)
-
-  
