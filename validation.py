@@ -1,6 +1,7 @@
 import numpy as np
 import keras
 from pickle import load, dump
+import matplotlib.pyplot as plt
 
 class Company:
   def __init__(self, symbol, name, stock):
@@ -14,7 +15,6 @@ normalizer_x = load(open("./preprocessed_data/normalizer_x.pkl", "rb"))
 normalizer_y = load(open("./preprocessed_data/normalizer_y.pkl", "rb"))
 
 x_train = np.load("./preprocessed_data/x_train.npy")
-train_idx = x_train.shape[0]
 
 x_val = np.load("./preprocessed_data/x_val.npy")
 y_val = np.load("./preprocessed_data/y_val.npy")
@@ -23,6 +23,9 @@ x_test = np.load("./preprocessed_data/x_test.npy")
 y_test = np.load("./preprocessed_data/y_test.npy")
 
 model = keras.models.load_model('./models/model_1')
+
+train_idx = x_train.shape[0]
+val_idx = x_val.shape[0] + train_idx
 
 with open('./preprocessed_data/file.pkl', 'rb') as file: 
     companies = load(file)
@@ -42,7 +45,21 @@ def get_balances(model, stocks_x, buffer_idx):
     balances.append(balance)
   return (balances, balance)
 
-balances = []
-final_balances = []
 
-balance, final_balance = get_balances(model, x_val, train_idx)
+# balance, final_balance= get_balances(model, x_val, train_idx)
+
+# plt.plot(balance)
+# plt.title("Total balance of Stock Bot accounts")
+# plt.ylabel("Balance (USD)")
+# plt.xlabel("Days")
+# plt.legend("model")
+# plt.show()
+
+balance_result, final_balance_result= get_balances(model, x_test, val_idx)
+
+plt.plot(balance_result)
+plt.title("Total balance of Stock Bot accounts")
+plt.ylabel("Balance (USD)")
+plt.xlabel("Days")
+plt.legend("model")
+plt.show()
