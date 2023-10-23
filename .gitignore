@@ -16,3 +16,4 @@ models/model_1/keras_metadata.pb
 models/model_1/saved_model.pb
 models/model_1/variables/variables.data-00000-of-00001
 models/model_1/variables/variables.index
+dialog.ui
