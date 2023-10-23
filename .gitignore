@@ -9,3 +9,10 @@ preprocessed_data/normalizer_y.pkl
 preprocessed_data/normalizer_x.pkl
 dataset/y.npy
 dataset/x.npy
+preprocessed_data/file.pkl
+__pycache__/get_analyze_preprocess_data.cpython-311.pyc
+models/model_1/fingerprint.pb
+models/model_1/keras_metadata.pb
+models/model_1/saved_model.pb
+models/model_1/variables/variables.data-00000-of-00001
+models/model_1/variables/variables.index
