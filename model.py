@@ -1,7 +1,6 @@
 import pandas as pd
 import datetime
 from datetime import date
-import pandas_datareader.data as web
 from matplotlib import pyplot as plt
 import keras
 from keras.initializers import HeUniform
@@ -17,8 +16,9 @@ import random
 from collections import deque
 from IPython.display import clear_output
 import os
+# from get_analyze_preprocess_data import Company
 
-stocks = pd.read_csv('./dataset/data.csv')
+# stocks = pd.read_csv('./dataset/data.csv')
 
 normalizer_x = load(open("./preprocessed_data/normalizer_x.pkl", "rb"))
 normalizer_y = load(open("./preprocessed_data/normalizer_y.pkl", "rb"))
@@ -36,9 +36,7 @@ x_test = np.load("./preprocessed_data/x_test.npy")
 y_test = np.load("./preprocessed_data/y_test.npy")
 
 num_days_per_company = 30
-
-[idx, companynum] = stocks.shape
-companynum = companynum - 1
+companynum = 267
 
 input_shape = num_days_per_company*companynum
 print(input_shape)

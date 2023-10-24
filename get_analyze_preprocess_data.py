@@ -1,7 +1,8 @@
 import pandas as pd
 import datetime
 from datetime import date
-import pandas_datareader.data as web
+# import pandas_datareader.data as web
+import yfinance as yf
 from matplotlib import pyplot as plt
 import keras
 from keras.initializers import HeUniform
@@ -63,6 +64,13 @@ for i in range(len(df)):
 print(len(symbols))
 print(len(names))
 
+str_symbols = " ".join(symbols)
+
+data = yf.download(str_symbols, start=fifteen_years_ago, end=today)
+
+print(data.head())
+
+stocks = data['Close']
 # ticker_dict = {}
 # for idx, ticker in enumerate(symbols):
 #     try:
@@ -75,13 +83,15 @@ print(len(names))
 
 # stocks.to_csv('./dataset/data.csv')
 
-stocks = pd.read_csv('./dataset/data.csv')
+# stocks = pd.read_csv('./dataset/data.csv')
 # Analyze Dataset
 companies = []
+data.to_csv('./dataset/data.csv')
 for i in range(len(symbols)):
     symbol = symbols[i]
     name = names[i]
-    companies.append(Company(symbol, name, list(stocks[symbol][0:])))
+    # companies.append(Company(symbol, name, list(stocks[symbol][0:])))
+    companies.append(Company(symbol, name, list(data['Close'][symbol][1:])))
 
 with open('./preprocessed_data/file.pkl', 'wb') as file:
     dump(companies, file)
