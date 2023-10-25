@@ -16,9 +16,9 @@ import random
 from collections import deque
 from IPython.display import clear_output
 import os
-# # from get_analyze_preprocess_data import Company
+# from get_analyze_preprocess_data import Company
 
-# # stocks = pd.read_csv('./dataset/data.csv')
+# stocks = pd.read_csv('./dataset/data.csv')
 
 normalizer_x = load(open("./preprocessed_data/normalizer_x.pkl", "rb"))
 normalizer_y = load(open("./preprocessed_data/normalizer_y.pkl", "rb"))
@@ -39,9 +39,9 @@ num_days_per_company = 30
 companynum = 267
 
 input_shape = num_days_per_company*companynum
-# print(input_shape)
+print(input_shape)
 output_shape = companynum
-# print(output_shape)
+print(output_shape)
 
 def make_model(layers=[100, 100, 100], # number of hidden layers and number of neurons for hidden layers
                input_shape=input_shape, # input shape of model
@@ -181,9 +181,9 @@ def fit_model(
       epsilon = min_epsilon + (max_epsilon - min_epsilon) * np.exp(-decay * episode)
   return model, target_model
 
-# models = []
+models = []
 
-# for i in range(1, 5): # number of 100 neuron hidden layers for model
-#   model, target_model = fit_model(layers=[100 for k in range(i)])
-#   model.save(f"./models/model_{i}")
-#   models.append(model)
+for i in range(1, 5): # number of 100 neuron hidden layers for model
+  model, target_model = fit_model(layers=[100 for k in range(i)])
+  model.save(f"./models/model_{i}")
+  models.append(model)

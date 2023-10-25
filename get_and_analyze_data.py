@@ -74,23 +74,23 @@ print(len(names))
 
 # stocks.to_csv('./dataset/data.csv')
 
-stocks = pd.read_csv('./dataset/data.csv')
-# Analyze Dataset
-companies = []
-for i in range(len(symbols)):
-    symbol = symbols[i]
-    name = names[i]
-    companies.append(Company(symbol, name, list(stocks[symbol][0:])))
+# stocks = pd.read_csv('./dataset/data.csv')
+# # Analyze Dataset
+# companies = []
+# for i in range(len(symbols)):
+#     symbol = symbols[i]
+#     name = names[i]
+#     companies.append(Company(symbol, name, list(stocks[symbol][0:])))
 
-def plot_stock(symbol):
-  for i in range(len(companies)):
-    if companies[i].symbol == symbol:
-      plt.plot(companies[i].stock)
-      plt.title(companies[i].name + " Stock")
-      plt.ylabel("Stock Price (USD)")
-      plt.xlabel(f"Number of days (after {fifteen_years_ago.month}/{fifteen_years_ago.day}/{fifteen_years_ago.year})")
-      plt.show()
-      return
-  print(symbol + " stock data not found")
+# def plot_stock(symbol):
+#   for i in range(len(companies)):
+#     if companies[i].symbol == symbol:
+#       plt.plot(companies[i].stock)
+#       plt.title(companies[i].name + " Stock")
+#       plt.ylabel("Stock Price (USD)")
+#       plt.xlabel(f"Number of days (after {fifteen_years_ago.month}/{fifteen_years_ago.day}/{fifteen_years_ago.year})")
+#       plt.show()
+#       return
+#   print(symbol + " stock data not found")
 
-plot_stock("GOOG")
+# plot_stock("GOOG")
